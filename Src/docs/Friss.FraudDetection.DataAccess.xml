@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Friss.FraudDetection.Main</name>
+    </assembly>
+    <members>
+        <member name="T:Friss.FraudDetection.Main.Contracts.AggregatedMatchResult">
+            <summary>
+            Aggregate result of matching.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Main.Contracts.AggregatedMatchResult.MatchPercentage">
+            <inheritdoc/>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Contracts.AggregatedMatchResult.AddRuleResult(Friss.FraudDetection.Contracts.IMatchingResult)">
+            <summary>
+            Adds the match percentage to result.
+            </summary>
+            <param name="ruleResult">matching percentage for rule to be added.</param>
+        </member>
+        <member name="T:Friss.FraudDetection.Main.Contracts.IMatchingRule`1">
+            <summary>
+            Matching rule to perform match.
+            </summary>
+            <typeparam name="T">Object type to compare.</typeparam>
+        </member>
+        <member name="P:Friss.FraudDetection.Main.Contracts.IMatchingRule`1.RuleSettings">
+            <summary>
+            Gets the rule setting.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Contracts.IMatchingRule`1.Run(`0,`0)">
+            <summary>
+            Runs the rule.
+            </summary>
+            <param name="firstObject">First  object to compare.</param>
+            <param name="secondObject">second object to compare.</param>
+            <returns>Matching result.</returns>
+        </member>
+        <member name="T:Friss.FraudDetection.Main.Contracts.IRuleService`1">
+            <summary>
+            Allows execution of rules against given data.
+            </summary>
+            <typeparam name="T">The type of the objects.</typeparam>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Contracts.IRuleService`1.RunRules(`0,`0)">
+            <summary>
+            Run matching rules for the given objects..
+            </summary>
+            <param name="firstObject">first object.</param>
+            <param name="secondObject">second object.</param>
+            <returns>matching rule based on rule success.</returns>
+        </member>
+        <member name="T:Friss.FraudDetection.Main.Contracts.MatchingResult">
+            <summary>
+            Match result instance.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Contracts.MatchingResult.#ctor(System.Decimal)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Main.Contracts.MatchingResult"/> class.
+            </summary>
+            <param name="matchPercentage">allocated match percentage.</param>
+        </member>
+        <member name="P:Friss.FraudDetection.Main.Contracts.MatchingResult.MatchPercentage">
+            <inheritdoc/>
+        </member>
+        <member name="T:Friss.FraudDetection.Main.Contracts.NoMatchResult">
+            <summary>
+            Represents result for no match.
+            </summary>
+        </member>
+        <member name="F:Friss.FraudDetection.Main.Contracts.NoMatchResult.Instance">
+            <summary>
+            No match instance.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Main.Contracts.NoMatchResult.MatchPercentage">
+            <inheritdoc/>
+        </member>
+        <member name="T:Friss.FraudDetection.Main.Rules.PersonMatchRuleService">
+            <summary>
+            Rules executor for person.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Rules.PersonMatchRuleService.#ctor(System.Collections.Generic.IList{Friss.FraudDetection.Main.Contracts.IMatchingRule{Friss.FraudDetection.Contracts.Models.Person}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Main.Rules.PersonMatchRuleService"/> class.
+            </summary>
+            <param name="matchingRules">rules to execute.</param>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Rules.PersonMatchRuleService.RunRules(Friss.FraudDetection.Contracts.Models.Person,Friss.FraudDetection.Contracts.Models.Person)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Friss.FraudDetection.Main.Rules.SameDateOfBirthRule">
+            <summary>
+            Rule to match Last name of persons.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Rules.SameDateOfBirthRule.#ctor(Friss.FraudDetection.Contracts.Settings.RulesSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Main.Rules.SameDateOfBirthRule"/> class.
+            </summary>
+            <param name="rulesSettings">Rules settings from configuration.</param>
+        </member>
+        <member name="P:Friss.FraudDetection.Main.Rules.SameDateOfBirthRule.RuleSettings">
+            <inheritdoc/>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Rules.SameDateOfBirthRule.Run(Friss.FraudDetection.Contracts.Models.Person,Friss.FraudDetection.Contracts.Models.Person)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Friss.FraudDetection.Main.Rules.SameFirstNameRule">
+            <summary>
+            Rule to match Last name of persons.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Rules.SameFirstNameRule.#ctor(Friss.FraudDetection.Contracts.Settings.RulesSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Main.Rules.SameFirstNameRule"/> class.
+            </summary>
+            <param name="rulesSettings">Rules settings from configuration.</param>
+        </member>
+        <member name="P:Friss.FraudDetection.Main.Rules.SameFirstNameRule.RuleSettings">
+            <inheritdoc/>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Rules.SameFirstNameRule.Run(Friss.FraudDetection.Contracts.Models.Person,Friss.FraudDetection.Contracts.Models.Person)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Friss.FraudDetection.Main.Rules.SameIdentificationNumberRule">
+            <summary>
+            Rule to match Last name of persons.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Rules.SameIdentificationNumberRule.#ctor(Friss.FraudDetection.Contracts.Settings.RulesSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Main.Rules.SameIdentificationNumberRule"/> class.
+            </summary>
+            <param name="rulesSettings">Rules settings from configuration.</param>
+        </member>
+        <member name="P:Friss.FraudDetection.Main.Rules.SameIdentificationNumberRule.RuleSettings">
+            <inheritdoc/>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Rules.SameIdentificationNumberRule.Run(Friss.FraudDetection.Contracts.Models.Person,Friss.FraudDetection.Contracts.Models.Person)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Friss.FraudDetection.Main.Rules.SameLastNameRule">
+            <summary>
+            Rule to match Last name of persons.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Rules.SameLastNameRule.#ctor(Friss.FraudDetection.Contracts.Settings.RulesSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Main.Rules.SameLastNameRule"/> class.
+            </summary>
+            <param name="rulesSettings">Rules settings from configuration.</param>
+        </member>
+        <member name="P:Friss.FraudDetection.Main.Rules.SameLastNameRule.RuleSettings">
+            <inheritdoc/>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Rules.SameLastNameRule.Run(Friss.FraudDetection.Contracts.Models.Person,Friss.FraudDetection.Contracts.Models.Person)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Friss.FraudDetection.Main.Rules.SimilarFirstNameRule">
+            <summary>
+            Rule to match Last name of persons.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Rules.SimilarFirstNameRule.#ctor(Friss.FraudDetection.Contracts.Settings.RulesSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Main.Rules.SimilarFirstNameRule"/> class.
+            </summary>
+            <param name="rulesSettings">Rules settings from configuration.</param>
+        </member>
+        <member name="P:Friss.FraudDetection.Main.Rules.SimilarFirstNameRule.RuleSettings">
+            <inheritdoc/>
+        </member>
+        <member name="M:Friss.FraudDetection.Main.Rules.SimilarFirstNameRule.Run(Friss.FraudDetection.Contracts.Models.Person,Friss.FraudDetection.Contracts.Models.Person)">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

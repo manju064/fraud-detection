@@ -1,0 +1,29 @@
+﻿{
+    "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+    "settings": {
+        "indentation": {
+            "indentationSize": 4,
+            "tabSize": 4,
+            "useTabs": false
+        },
+        "orderingRules": {
+            "usingDirectivesPlacement": "outsideNamespace",
+            "blankLinesBetweenUsingGroups": "allow",
+            "systemUsingDirectivesFirst": true
+        },
+        "maintainabilityRules": {
+            "topLevelTypes": [
+                "class",
+                "interface",
+                "struct"
+            ]
+        },
+        "documentationRules": {
+            "companyName": "Friss",
+            "xmlHeader": false,
+            "documentExposedElements": false,
+            "documentInternalElements": false,
+            "documentInterfaces": false
+        }
+    }
+}

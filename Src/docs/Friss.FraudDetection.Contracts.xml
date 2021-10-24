@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Friss.FraudDetection.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:Friss.FraudDetection.Contracts.IMatchingResult">
+            <summary>
+            Represents a matching result contract for api.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Contracts.IMatchingResult.MatchPercentage">
+            <summary>
+            Gets match percentage.
+            </summary>
+        </member>
+        <member name="T:Friss.FraudDetection.Contracts.Models.Person">
+            <summary>
+            Api model for Domain object for Person.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Contracts.Models.Person.FirstName">
+            <summary>
+            Gets or sets first name of the person.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Contracts.Models.Person.LastName">
+            <summary>
+            Gets or sets last name of the person.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Contracts.Models.Person.DateOfBirth">
+            <summary>
+            Gets or sets date of birth of the person.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Contracts.Models.Person.IdentificationNumber">
+            <summary>
+            Gets or sets identification number of the person.
+            </summary>
+        </member>
+        <member name="T:Friss.FraudDetection.Contracts.Rules.Rule">
+            <summary>
+            Rule configuration key.
+            </summary>
+        </member>
+        <member name="F:Friss.FraudDetection.Contracts.Rules.Rule.SameIdentificationNumber">
+            <summary>
+            same Identification Number rule.
+            </summary>
+        </member>
+        <member name="F:Friss.FraudDetection.Contracts.Rules.Rule.SameLastName">
+            <summary>
+            same Last name rule.
+            </summary>
+        </member>
+        <member name="F:Friss.FraudDetection.Contracts.Rules.Rule.SameFirstName">
+            <summary>
+            same first name rule.
+            </summary>
+        </member>
+        <member name="F:Friss.FraudDetection.Contracts.Rules.Rule.SimilarFirstName">
+            <summary>
+            similar first name rule.
+            </summary>
+        </member>
+        <member name="F:Friss.FraudDetection.Contracts.Rules.Rule.SameDateOfBirth">
+            <summary>
+            same date of birth rule.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Contracts.Rules.Rule.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Contracts.Rules.Rule"/> class.
+            </summary>
+            <param name="ruleKey">rule key.</param>
+        </member>
+        <member name="T:Friss.FraudDetection.Contracts.Settings.RuleSettings">
+            <summary>
+            Matching rule setting.
+            </summary>
+            <param name="Enabled">if matching is enabled.</param>
+            <param name="Priority">Priority of the rule (more the weight is the highest priority).</param>
+            <param name="MatchPercentage">Match percentage value if rule is successful.</param>
+        </member>
+        <member name="M:Friss.FraudDetection.Contracts.Settings.RuleSettings.#ctor(System.Boolean,System.Int32,System.Decimal)">
+            <summary>
+            Matching rule setting.
+            </summary>
+            <param name="Enabled">if matching is enabled.</param>
+            <param name="Priority">Priority of the rule (more the weight is the highest priority).</param>
+            <param name="MatchPercentage">Match percentage value if rule is successful.</param>
+        </member>
+        <member name="T:Friss.FraudDetection.Contracts.Settings.RulesSettings">
+            <summary>
+            Rules settings from configuration.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Contracts.Settings.RulesSettings.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Contracts.Settings.RulesSettings"/> class.
+            </summary>
+        </member>
+        <member name="T:Friss.FraudDetection.Contracts.Settings.RulesSettings.Factory">
+            <summary>
+            Factory to uild configuration settings.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Contracts.Settings.RulesSettings.Factory.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Contracts.Settings.RulesSettings.Factory"/> class.
+            </summary>
+            <param name="config">configuration.</param>
+        </member>
+        <member name="M:Friss.FraudDetection.Contracts.Settings.RulesSettings.Factory.Build">
+            <summary>
+            build rule settings from configuration.
+            </summary>
+            <returns>Rules settings.</returns>
+        </member>
+    </members>
+</doc>

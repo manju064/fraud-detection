@@ -1,0 +1,371 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Friss.FraudDetection.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Friss.FraudDetection.Api.Controllers.PersonsController">
+            <summary>
+            Api end point to interact with Person data.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Controllers.PersonsController.#ctor(Friss.FraudDetection.Main.Contracts.IRuleService{Friss.FraudDetection.Contracts.Models.Person})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Controllers.PersonsController"/> class.
+            </summary>
+            <param name="personMatchRuleService">person Matching Rule Service.</param>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Controllers.PersonsController.CalculatePersonFraudProbability(Friss.FraudDetection.Api.Models.PersonFraudProbabilityRequest)">
+            <summary>
+            Calculate fraud probability for 2 persons.
+            </summary>
+            <param name="request">Person Fraud Probability Request model.</param>
+            <returns>response with matching result percentage.</returns>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Infrastructure.Filters.ValidateModelStateAttribute">
+            <summary>
+            Global filter to check model state.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Infrastructure.Filters.ValidateModelStateAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            On action executing filter.
+            </summary>
+            <param name="context">action context.</param>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Infrastructure.Middleware.BaseLogMiddleware">
+            <summary>
+            Base class for logger middleware.
+            </summary>
+        </member>
+        <member name="F:Friss.FraudDetection.Api.Infrastructure.Middleware.BaseLogMiddleware.Next">
+            <summary>
+            Next processing pipeline.
+            </summary>
+        </member>
+        <member name="F:Friss.FraudDetection.Api.Infrastructure.Middleware.BaseLogMiddleware.Logger">
+            <summary>
+            the logger for logging.
+            </summary>
+        </member>
+        <member name="F:Friss.FraudDetection.Api.Infrastructure.Middleware.BaseLogMiddleware.DefaultFormatter">
+            <summary>
+            default formatter for logs.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Infrastructure.Middleware.BaseLogMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{Friss.FraudDetection.Api.Infrastructure.Middleware.BaseLogMiddleware})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Infrastructure.Middleware.BaseLogMiddleware"/> class.
+            </summary>
+            <param name="next">RequestDelegate.</param>
+            <param name="logger">ILogger.</param>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Infrastructure.Middleware.ErrorWrappingMiddleware">
+            <summary>
+            Error handling middleware.
+            </summary>
+        </member>
+        <member name="F:Friss.FraudDetection.Api.Infrastructure.Middleware.ErrorWrappingMiddleware.env">
+            <summary>
+            environment.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Infrastructure.Middleware.ErrorWrappingMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{Friss.FraudDetection.Api.Infrastructure.Middleware.ErrorWrappingMiddleware},Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Infrastructure.Middleware.ErrorWrappingMiddleware"/> class.
+            </summary>
+            <param name="next">RequestDelegate.</param>
+            <param name="logger">ILogger.</param>
+            <param name="env">IHostingEnvironment.</param>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Infrastructure.Middleware.ErrorWrappingMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Invoke MW action.
+            </summary>
+            <param name="context">HttpContext.</param>
+            <returns>Task for next MW pipeline.</returns>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Infrastructure.Middleware.ErrorWrappingMiddleware.JsonErrorResponse">
+            <summary>
+            Error response for exceptions.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Api.Infrastructure.Middleware.ErrorWrappingMiddleware.JsonErrorResponse.DeveloperMessage">
+            <summary>
+            Gets detail stack trace.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Api.Infrastructure.Middleware.ErrorWrappingMiddleware.JsonErrorResponse.Instance">
+            <summary>
+            Gets a URI reference that identifies the specific occurrence of the problem.It may or may not yield further information if dereferences.
+            </summary>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Infrastructure.Middleware.LogRequestMiddleware">
+            <summary>
+            Log request
+            Credits: https://github.com/sulhome/log-request-response-middleware.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Infrastructure.Middleware.LogRequestMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{Friss.FraudDetection.Api.Infrastructure.Middleware.LogRequestMiddleware})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Infrastructure.Middleware.LogRequestMiddleware"/> class.
+            </summary>
+            <param name="next">RequestDelegate.</param>
+            <param name="logger">ILogger.</param>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Infrastructure.Middleware.LogRequestMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Invoke Log Request Middleware.
+            </summary>
+            <param name="context">HttpContext.</param>
+            <returns>next Task.</returns>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Infrastructure.Middleware.LogResponseMiddleware">
+            <summary>
+            Log Response
+            Credits: https://github.com/sulhome/log-request-response-middleware.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Infrastructure.Middleware.LogResponseMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{Friss.FraudDetection.Api.Infrastructure.Middleware.LogResponseMiddleware})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Infrastructure.Middleware.LogResponseMiddleware"/> class.
+            </summary>
+            <param name="next">RequestDelegate.</param>
+            <param name="logger">ILogger.</param>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Infrastructure.Middleware.LogResponseMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Invoke Log Response Middleware.
+            </summary>
+            <param name="context">HttpContext.</param>
+            <returns>next Task.</returns>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Models.PersonFraudProbabilityRequest">
+            <summary>
+            Request model to calculate probability of identical person.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Api.Models.PersonFraudProbabilityRequest.FirstPerson">
+            <summary>
+            Gets or sets first person details.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Api.Models.PersonFraudProbabilityRequest.SecondPerson">
+            <summary>
+            Gets or sets second person details.
+            </summary>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Models.Responses.ApiOkResponse`1">
+            <summary>
+            Object for sending successful api OK response.
+            </summary>
+            <typeparam name="T">data</typeparam>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Models.Responses.ApiOkResponse`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Models.Responses.ApiOkResponse`1"/> class.
+            </summary>
+            <param name="data">Generic type data</param>
+        </member>
+        <member name="P:Friss.FraudDetection.Api.Models.Responses.ApiOkResponse`1.Data">
+            <summary>
+            Gets Data.
+            </summary>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Models.Responses.ApiResponse">
+            <summary>
+            Api Response base class
+            Credits: https://www.devtrends.co.uk/blog/handling-errors-in-asp.net-core-web-api.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Models.Responses.ApiResponse.#ctor(System.Net.HttpStatusCode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Models.Responses.ApiResponse"/> class.
+            </summary>
+            <param name="statusCode">HttpStatusCode.</param>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Models.Responses.ApiResponse.#ctor(System.Net.HttpStatusCode,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Models.Responses.ApiResponse"/> class.
+            </summary>
+            <param name="statusCode">HttpStatusCode.</param>
+            <param name="message">message.</param>
+        </member>
+        <member name="P:Friss.FraudDetection.Api.Models.Responses.ApiResponse.StatusCode">
+            <summary>
+            Gets status code of the response.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Api.Models.Responses.ApiResponse.Message">
+            <summary>
+            Gets Message.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Models.Responses.ApiResponse.GetDefaultMessageForStatusCode(System.Net.HttpStatusCode)">
+            <summary>
+            Get Default message for statusCode.
+            </summary>
+            <param name="status">HttpStatusCode.</param>
+            <returns>default messages.</returns>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Models.Responses.Exceptions.ApiException">
+            <summary>
+            ApiException object to manage exceptions for api.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Models.Responses.Exceptions.ApiException.#ctor(System.Net.HttpStatusCode,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Models.Responses.Exceptions.ApiException"/> class.
+            </summary>
+            <param name="statusCode">HttpStatus Code.</param>
+            <param name="errorCode">error code.</param>
+            <param name="errorDescription">error Description.</param>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Models.Responses.Exceptions.ApiException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Models.Responses.Exceptions.ApiException"/> class.
+            </summary>
+            <param name="info">SerializationInfo.</param>
+            <param name="context">StreamingContext.</param>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Models.Responses.Exceptions.ApiException.#ctor(System.Net.HttpStatusCode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Models.Responses.Exceptions.ApiException"/> class.
+            </summary>
+            <param name="statusCode">HttpStatusCode.</param>
+        </member>
+        <member name="P:Friss.FraudDetection.Api.Models.Responses.Exceptions.ApiException.StatusCode">
+            <summary>
+            Gets status code of the exception.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Api.Models.Responses.Exceptions.ApiException.ErrorCode">
+            <summary>
+            Gets get ErrorCode(for internal purpose).
+            </summary>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Models.Responses.Exceptions.BadRequestException">
+            <summary>
+            BadRequestException for 400 status.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Models.Responses.Exceptions.BadRequestException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Models.Responses.Exceptions.BadRequestException"/> class.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Models.Responses.Exceptions.BadRequestException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Models.Responses.Exceptions.BadRequestException"/> class.
+            </summary>
+            <param name="message">message.</param>
+            <param name="errorCode">error Code.</param>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Models.Responses.Exceptions.NotFoundException">
+            <summary>
+            NotFoundException for 404 status.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Models.Responses.Exceptions.NotFoundException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Models.Responses.Exceptions.NotFoundException"/> class.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Models.Responses.Exceptions.NotFoundException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Models.Responses.Exceptions.NotFoundException"/> class.
+            </summary>
+            <param name="message">message.</param>
+            <param name="errorCode">errorCode.</param>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Models.Responses.Exceptions.UnauthorizedException">
+            <summary>
+            UnauthorizedException for 401.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Models.Responses.Exceptions.UnauthorizedException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Models.Responses.Exceptions.UnauthorizedException"/> class.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Models.Responses.Exceptions.UnauthorizedException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Models.Responses.Exceptions.UnauthorizedException"/> class.
+            </summary>
+            <param name="message">message.</param>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Modules.RulesModule">
+            <summary>
+            Matching rules module.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Modules.RulesModule.Load(Autofac.ContainerBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Program">
+            <summary>
+            Entry point class.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Program.Main(System.String[])">
+            <summary>
+            Entry point for api.
+            </summary>
+            <param name="args">arguments for startup.</param>
+            <exception cref="T:System.InvalidOperationException">Throws error if can't find execution assembly location.</exception>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Program.CreateHostBuilder(System.String[],System.String)">
+            <summary>
+            Create host builder.
+            </summary>
+            <param name="args">arguments for startup.</param>
+            <param name="baseConfigPath">location of the base config file.</param>
+            <returns>configured host builder.</returns>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Startup">
+            <summary>
+            Start up class for the api.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Startup"/> class.
+            </summary>
+            <param name="configuration">configuration of application.</param>
+        </member>
+        <member name="P:Friss.FraudDetection.Api.Startup.Configuration">
+            <summary>
+            Gets application Configuration.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Api.Startup.AutofacContainer">
+            <summary>
+            Gets autofacContainer.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services">services collection to configure.</param>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Startup.ConfigureContainer(Autofac.ContainerBuilder)">
+            <summary>
+            ConfigureContainer is where you can register things directly
+            with Autofac. This runs after ConfigureServices so the things
+            here will override registrations made in ConfigureServices.
+            Don't build the container; that gets done for you by the factory.
+            </summary>
+            <param name="builder">autofac builder.</param>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Hosting.IHostApplicationLifetime,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app">app builder instance.</param>
+            <param name="env">environment of the app.</param>
+            <param name="appLifetime">IApplicationLifetime.</param>
+            <param name="loggerFactory">ILoggerFactory.</param>
+        </member>
+    </members>
+</doc>
