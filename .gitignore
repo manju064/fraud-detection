@@ -348,3 +348,7 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/Src/Api/.config
+/Src/Api/Properties/ServiceDependencies/FraudCheck - Zip Deploy
+/Src/Api/Properties/serviceDependencies.FraudCheck - Zip Deploy.json
+/Src/Api/Properties/serviceDependencies.json
