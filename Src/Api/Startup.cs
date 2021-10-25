@@ -105,16 +105,16 @@ namespace Friss.FraudDetection.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api v1"));
+                loggerFactory.AddSerilog();
+
+                // Ensure any buffered events are sent at shutdown
+                appLifetime.ApplicationStopped.Register(Log.CloseAndFlush);
+
+                loggerFactory.AddFile(this.Configuration.GetSection("Logging:Serilog"));
             }
 
-            // Ensure any buffered events are sent at shutdown
-            appLifetime.ApplicationStopped.Register(Log.CloseAndFlush);
-            loggerFactory.AddSerilog();
-
-            // Ensure any buffered events are sent at shutdown
-            loggerFactory.AddFile(this.Configuration.GetSection("Logging:Serilog"));
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Api v1"));
 
             // add middleware
             app.UseMiddleware<LogResponseMiddleware>();

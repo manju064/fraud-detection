@@ -6,6 +6,7 @@ using Friss.FraudDetection.Api.Extensions;
 using Friss.FraudDetection.DataAccess;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Friss.FraudDetection.Api
 {
@@ -31,6 +32,7 @@ namespace Friss.FraudDetection.Api
         /// <returns>configured host builder.</returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureLogging(builder => builder.AddAzureWebAppDiagnostics())
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
