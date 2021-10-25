@@ -36,4 +36,4 @@ Visual Studio 2019
 
 # Swagger documentation
 
-![Screenshot](swagger_doc.png)
+![alt text](https://github.com/manju064/fraud-detection/blob/main/swagger_doc.PNG)
