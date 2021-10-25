@@ -2,13 +2,13 @@
 
 using System;
 using Autofac.Extensions.DependencyInjection;
+using Azure.Identity;
 using Friss.FraudDetection.Api.Extensions;
 using Friss.FraudDetection.DataAccess;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Azure.Identity;
-using Microsoft.Extensions.Configuration;
 
 namespace Friss.FraudDetection.Api
 {
@@ -34,13 +34,13 @@ namespace Friss.FraudDetection.Api
         /// <returns>configured host builder.</returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureAppConfiguration((context, config) =>
                 {
                 var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("VaultUri"));
                 config.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
                 })
                 .ConfigureLogging(builder => builder.AddAzureWebAppDiagnostics())
-                .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
