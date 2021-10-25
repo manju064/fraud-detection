@@ -19,6 +19,7 @@ namespace Friss.FraudDetection.Api.Controllers
     /// <summary>
     /// Api end point to interact with Person data.
     /// </summary>
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class PersonsController : ControllerBase
