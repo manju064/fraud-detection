@@ -12,7 +12,7 @@ namespace Friss.FraudDetection.Main.Rules
     /// <summary>
     /// Rule to match Last name of persons.
     /// </summary>
-    public class SameFirstNameRule : IMatchingRule<Person>
+    public class SameFirstNameRule : IMatchingRule<PersonModel>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SameFirstNameRule"/> class.
@@ -27,7 +27,7 @@ namespace Friss.FraudDetection.Main.Rules
         private static Rule Rule => Rule.SameFirstName;
 
         /// <inheritdoc/>
-        public IMatchingResult Run(Person firstPerson, Person secondPerson)
+        public IMatchingResult Run(PersonModel firstPerson, PersonModel secondPerson)
         => firstPerson.FirstName.Equals(secondPerson.FirstName) ? new MatchingResult(this.RuleSettings.MatchPercentage) : NoMatchResult.Instance;
     }
 }

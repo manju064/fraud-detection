@@ -11,7 +11,7 @@ namespace Friss.FraudDetection.Main.Tests.Rules
 {
     public class SameDateOfBirthRuleTests
     {
-        private readonly IMatchingRule<Person> rule;
+        private readonly IMatchingRule<PersonModel> rule;
 
         public SameDateOfBirthRuleTests()
         {
@@ -35,8 +35,8 @@ namespace Friss.FraudDetection.Main.Tests.Rules
         public void Match_Ok(DateTime? dob1, DateTime? dob2, bool expectedMatch)
         {
             //arrange
-            var person1 = new Person() {FirstName = "first", LastName = "last",  DateOfBirth = dob1 };
-            var person2 = new Person() { FirstName = "second", LastName = "Last", DateOfBirth = dob2 };
+            var person1 = new PersonModel() {FirstName = "first", LastName = "last",  DateOfBirth = dob1 };
+            var person2 = new PersonModel() { FirstName = "second", LastName = "Last", DateOfBirth = dob2 };
 
             // act
             var result = this.rule.Run(person1, person2);

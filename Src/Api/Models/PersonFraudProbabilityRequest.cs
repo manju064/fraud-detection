@@ -14,12 +14,12 @@ namespace Friss.FraudDetection.Api.Models
         /// Gets or sets first person details.
         /// </summary>
         [Required]
-        public Person FirstPerson { get; set; } = null!;
+        public PersonModel FirstPerson { get; set; } = null!;
 
         /// <summary>
         /// Gets or sets second person details.
         /// </summary>
         [Required]
-        public Person SecondPerson { get; set; } = null!;
+        public PersonModel SecondPerson { get; set; } = null!;
     }
 }

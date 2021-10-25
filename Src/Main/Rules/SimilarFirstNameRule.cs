@@ -12,7 +12,7 @@ namespace Friss.FraudDetection.Main.Rules
     /// <summary>
     /// Rule to match Last name of persons.
     /// </summary>
-    public class SimilarFirstNameRule : IMatchingRule<Person>
+    public class SimilarFirstNameRule : IMatchingRule<PersonModel>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SimilarFirstNameRule"/> class.
@@ -27,7 +27,7 @@ namespace Friss.FraudDetection.Main.Rules
         private static Rule Rule => Rule.SimilarFirstName;
 
         /// <inheritdoc/>
-        public IMatchingResult Run(Person firstPerson, Person secondPerson)
+        public IMatchingResult Run(PersonModel firstPerson, PersonModel secondPerson)
         {
             var score = Fuzz.PartialRatio(firstPerson.FirstName, secondPerson.FirstName);
 

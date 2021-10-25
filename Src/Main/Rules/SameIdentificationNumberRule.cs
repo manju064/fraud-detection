@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Friss. All rights reserved.
 
-using System;
 using Friss.FraudDetection.Contracts;
 using Friss.FraudDetection.Contracts.Models;
 using Friss.FraudDetection.Contracts.Rules;
@@ -12,7 +11,7 @@ namespace Friss.FraudDetection.Main.Rules
     /// <summary>
     /// Rule to match Last name of persons.
     /// </summary>
-    public class SameIdentificationNumberRule : IMatchingRule<Person>
+    public class SameIdentificationNumberRule : IMatchingRule<PersonModel>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SameIdentificationNumberRule"/> class.
@@ -27,7 +26,7 @@ namespace Friss.FraudDetection.Main.Rules
         private static Rule Rule => Rule.SameIdentificationNumber;
 
         /// <inheritdoc/>
-        public IMatchingResult Run(Person firstPerson, Person secondPerson)
+        public IMatchingResult Run(PersonModel firstPerson, PersonModel secondPerson)
             => firstPerson.IdentificationNumber.HasValue && secondPerson.IdentificationNumber.HasValue && firstPerson.IdentificationNumber.Value == secondPerson.IdentificationNumber.Value ?
                 new MatchingResult(this.RuleSettings.MatchPercentage) : NoMatchResult.Instance;
     }

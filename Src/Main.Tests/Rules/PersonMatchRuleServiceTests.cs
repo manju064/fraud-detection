@@ -22,12 +22,12 @@ namespace Friss.FraudDetection.Main.Tests.Rules
         public void RunRules_Ok()
         {
             // arrange
-            var person1 = new Mock<Person>().Object;
-            var person2 = new Mock<Person>().Object;
+            var person1 = new Mock<PersonModel>().Object;
+            var person2 = new Mock<PersonModel>().Object;
 
-            var rule1 = new Mock<IMatchingRule<Person>>();
-            var rule2 = new Mock<IMatchingRule<Person>>();
-            var rule3 = new Mock<IMatchingRule<Person>>();
+            var rule1 = new Mock<IMatchingRule<PersonModel>>();
+            var rule2 = new Mock<IMatchingRule<PersonModel>>();
+            var rule3 = new Mock<IMatchingRule<PersonModel>>();
 
             rule1.SetupGet(r => r.RuleSettings).Returns(new RuleSettings(true, 2, 40));
             rule1.Setup(r => r.Run(person1, person2)).Returns(new MatchingResult(40));
@@ -39,7 +39,7 @@ namespace Friss.FraudDetection.Main.Tests.Rules
             rule3.Setup(r => r.Run(person1, person2)).Returns(NoMatchResult.Instance);
 
 
-            IRuleService<Person> ruleService = new PersonMatchRuleService(new List<IMatchingRule<Person>>(){ rule1.Object, rule2.Object});
+            IRuleService<PersonModel> ruleService = new PersonMatchRuleService(new List<IMatchingRule<PersonModel>>(){ rule1.Object, rule2.Object});
 
             // act
             var result = ruleService.RunRules(person1, person2);
@@ -52,12 +52,12 @@ namespace Friss.FraudDetection.Main.Tests.Rules
         public void RunRules_MultipleMatches_Ok()
         {
             // arrange
-            var person1 = new Mock<Person>().Object;
-            var person2 = new Mock<Person>().Object;
+            var person1 = new Mock<PersonModel>().Object;
+            var person2 = new Mock<PersonModel>().Object;
 
-            var rule1 = new Mock<IMatchingRule<Person>>();
-            var rule2 = new Mock<IMatchingRule<Person>>();
-            var rule3 = new Mock<IMatchingRule<Person>>();
+            var rule1 = new Mock<IMatchingRule<PersonModel>>();
+            var rule2 = new Mock<IMatchingRule<PersonModel>>();
+            var rule3 = new Mock<IMatchingRule<PersonModel>>();
 
             rule1.SetupGet(r => r.RuleSettings).Returns(new RuleSettings(true, 2, 100));
             rule1.Setup(r => r.Run(person1, person2)).Returns(new MatchingResult(100));
@@ -69,7 +69,7 @@ namespace Friss.FraudDetection.Main.Tests.Rules
             rule3.Setup(r => r.Run(person1, person2)).Returns(new MatchingResult(40));
 
 
-            IRuleService<Person> ruleService = new PersonMatchRuleService(new List<IMatchingRule<Person>>() { rule1.Object, rule2.Object });
+            IRuleService<PersonModel> ruleService = new PersonMatchRuleService(new List<IMatchingRule<PersonModel>>() { rule1.Object, rule2.Object });
 
             // act
             var result = ruleService.RunRules(person1, person2);

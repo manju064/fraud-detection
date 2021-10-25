@@ -11,19 +11,19 @@ namespace Friss.FraudDetection.Main.Rules
     /// <summary>
     /// Rules executor for person.
     /// </summary>
-    public class PersonMatchRuleService : IRuleService<Person>
+    public class PersonMatchRuleService : IRuleService<PersonModel>
     {
-        private readonly IList<IMatchingRule<Person>> matchingRules;
+        private readonly IList<IMatchingRule<PersonModel>> matchingRules;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PersonMatchRuleService"/> class.
         /// </summary>
         /// <param name="matchingRules">rules to execute.</param>
-        public PersonMatchRuleService(IList<IMatchingRule<Person>> matchingRules)
+        public PersonMatchRuleService(IList<IMatchingRule<PersonModel>> matchingRules)
         => this.matchingRules = matchingRules;
 
         /// <inheritdoc/>
-        public IMatchingResult RunRules(Person firstPerson, Person secondPerson)
+        public IMatchingResult RunRules(PersonModel firstPerson, PersonModel secondPerson)
         {
             var aggregatedMatchResult = new AggregatedMatchResult();
 

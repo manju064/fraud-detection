@@ -14,27 +14,32 @@
             Gets match percentage.
             </summary>
         </member>
-        <member name="T:Friss.FraudDetection.Contracts.Models.Person">
+        <member name="T:Friss.FraudDetection.Contracts.Models.PersonModel">
             <summary>
             Api model for Domain object for Person.
             </summary>
         </member>
-        <member name="P:Friss.FraudDetection.Contracts.Models.Person.FirstName">
+        <member name="P:Friss.FraudDetection.Contracts.Models.PersonModel.PersonId">
+            <summary>
+            Gets or sets person Id.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Contracts.Models.PersonModel.FirstName">
             <summary>
             Gets or sets first name of the person.
             </summary>
         </member>
-        <member name="P:Friss.FraudDetection.Contracts.Models.Person.LastName">
+        <member name="P:Friss.FraudDetection.Contracts.Models.PersonModel.LastName">
             <summary>
             Gets or sets last name of the person.
             </summary>
         </member>
-        <member name="P:Friss.FraudDetection.Contracts.Models.Person.DateOfBirth">
+        <member name="P:Friss.FraudDetection.Contracts.Models.PersonModel.DateOfBirth">
             <summary>
             Gets or sets date of birth of the person.
             </summary>
         </member>
-        <member name="P:Friss.FraudDetection.Contracts.Models.Person.IdentificationNumber">
+        <member name="P:Friss.FraudDetection.Contracts.Models.PersonModel.IdentificationNumber">
             <summary>
             Gets or sets identification number of the person.
             </summary>
@@ -79,17 +84,34 @@
             <summary>
             Matching rule setting.
             </summary>
-            <param name="Enabled">if matching is enabled.</param>
-            <param name="Priority">Priority of the rule (more the weight is the highest priority).</param>
-            <param name="MatchPercentage">Match percentage value if rule is successful.</param>
+        </member>
+        <member name="M:Friss.FraudDetection.Contracts.Settings.RuleSettings.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Contracts.Settings.RuleSettings"/> class.
+            </summary>
         </member>
         <member name="M:Friss.FraudDetection.Contracts.Settings.RuleSettings.#ctor(System.Boolean,System.Int32,System.Decimal)">
             <summary>
-            Matching rule setting.
+            Initializes a new instance of the <see cref="T:Friss.FraudDetection.Contracts.Settings.RuleSettings"/> class.
             </summary>
-            <param name="Enabled">if matching is enabled.</param>
-            <param name="Priority">Priority of the rule (more the weight is the highest priority).</param>
-            <param name="MatchPercentage">Match percentage value if rule is successful.</param>
+            <param name="enabled">indicating whether matching is enabled.</param>
+            <param name="priority">priority of the rule.</param>
+            <param name="matchPercentage">match percentage value.</param>
+        </member>
+        <member name="P:Friss.FraudDetection.Contracts.Settings.RuleSettings.Enabled">
+            <summary>
+            Gets or sets a value indicating whether matching is enabled.
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Contracts.Settings.RuleSettings.Priority">
+            <summary>
+             Gets or sets priority of the rule (more the weight is the highest priority).
+            </summary>
+        </member>
+        <member name="P:Friss.FraudDetection.Contracts.Settings.RuleSettings.MatchPercentage">
+            <summary>
+            Gets or sets match percentage value if rule is successful.
+            </summary>
         </member>
         <member name="T:Friss.FraudDetection.Contracts.Settings.RulesSettings">
             <summary>

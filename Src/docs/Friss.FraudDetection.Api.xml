@@ -9,11 +9,26 @@
             Api end point to interact with Person data.
             </summary>
         </member>
-        <member name="M:Friss.FraudDetection.Api.Controllers.PersonsController.#ctor(Friss.FraudDetection.Main.Contracts.IRuleService{Friss.FraudDetection.Contracts.Models.Person})">
+        <member name="M:Friss.FraudDetection.Api.Controllers.PersonsController.#ctor(Friss.FraudDetection.Main.Contracts.IRuleService{Friss.FraudDetection.Contracts.Models.PersonModel},Friss.FraudDetection.Main.Person.IPersonService)">
             <summary>
             Initializes a new instance of the <see cref="T:Friss.FraudDetection.Api.Controllers.PersonsController"/> class.
             </summary>
             <param name="personMatchRuleService">person Matching Rule Service.</param>
+            <param name="personService">person service for crud operations.</param>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Controllers.PersonsController.Get(System.Int32)">
+            <summary>
+            Get person By Id.
+            </summary>
+            <param name="id">id of the person to retrieve.</param>
+            <returns>person details.</returns>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Controllers.PersonsController.Create(Friss.FraudDetection.Contracts.Models.PersonModel)">
+            <summary>
+            Stores a person.
+            </summary>
+            <param name="personModel">personModel to save.</param>
+            <returns>created person details.</returns>
         </member>
         <member name="M:Friss.FraudDetection.Api.Controllers.PersonsController.CalculatePersonFraudProbability(Friss.FraudDetection.Api.Models.PersonFraudProbabilityRequest)">
             <summary>
@@ -21,6 +36,19 @@
             </summary>
             <param name="request">Person Fraud Probability Request model.</param>
             <returns>response with matching result percentage.</returns>
+        </member>
+        <member name="T:Friss.FraudDetection.Api.Extensions.WebHostExtensions">
+            <summary>
+            Web host extensions.
+            </summary>
+        </member>
+        <member name="M:Friss.FraudDetection.Api.Extensions.WebHostExtensions.MigrateDatabase``1(Microsoft.Extensions.Hosting.IHost)">
+            <summary>
+            Check if migration should be applied and applies migration.
+            </summary>
+            <typeparam name="T">DbContext.</typeparam>
+            <param name="host">host.</param>
+            <returns>IWebHost.</returns>
         </member>
         <member name="T:Friss.FraudDetection.Api.Infrastructure.Filters.ValidateModelStateAttribute">
             <summary>
@@ -314,12 +342,11 @@
             <param name="args">arguments for startup.</param>
             <exception cref="T:System.InvalidOperationException">Throws error if can't find execution assembly location.</exception>
         </member>
-        <member name="M:Friss.FraudDetection.Api.Program.CreateHostBuilder(System.String[],System.String)">
+        <member name="M:Friss.FraudDetection.Api.Program.CreateHostBuilder(System.String[])">
             <summary>
             Create host builder.
             </summary>
             <param name="args">arguments for startup.</param>
-            <param name="baseConfigPath">location of the base config file.</param>
             <returns>configured host builder.</returns>
         </member>
         <member name="T:Friss.FraudDetection.Api.Startup">

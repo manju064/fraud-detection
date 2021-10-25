@@ -10,7 +10,7 @@ namespace Friss.FraudDetection.Main.Tests.Rules
 {
     public class SameIdentificationNumberRuleTests
     {
-        private readonly IMatchingRule<Person> rule;
+        private readonly IMatchingRule<PersonModel> rule;
 
         public SameIdentificationNumberRuleTests()
         {
@@ -32,8 +32,8 @@ namespace Friss.FraudDetection.Main.Tests.Rules
         public void Match_Ok(int? idNumber1, int? idNumber2, bool expectedMatch)
         {
             //arrange
-            var person1 = new Person() {FirstName = "first", LastName = "last", IdentificationNumber = idNumber1 };
-            var person2 = new Person() { FirstName = "second", LastName = "Last", IdentificationNumber = idNumber2 };
+            var person1 = new PersonModel() {FirstName = "first", LastName = "last", IdentificationNumber = idNumber1 };
+            var person2 = new PersonModel() { FirstName = "second", LastName = "Last", IdentificationNumber = idNumber2 };
 
             // act
             var result = this.rule.Run(person1, person2);

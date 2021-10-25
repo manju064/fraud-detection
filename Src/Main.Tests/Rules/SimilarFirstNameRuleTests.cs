@@ -10,7 +10,7 @@ namespace Friss.FraudDetection.Main.Tests.Rules
 {
     public class SimilarFirstNameRuleTests
     {
-        private readonly IMatchingRule<Person> rule;
+        private readonly IMatchingRule<PersonModel> rule;
 
         public SimilarFirstNameRuleTests()
         {
@@ -31,8 +31,8 @@ namespace Friss.FraudDetection.Main.Tests.Rules
         public void Match_Ok(string firstPersonFirstName, string secondPersonFirstName, bool expectedMatch)
         {
             //arrange
-            var person1 = new Person() {FirstName = firstPersonFirstName, LastName = "lastname"};
-            var person2 = new Person() { FirstName = secondPersonFirstName, LastName = "lastname" };
+            var person1 = new PersonModel() {FirstName = firstPersonFirstName, LastName = "lastname"};
+            var person2 = new PersonModel() { FirstName = secondPersonFirstName, LastName = "lastname" };
 
             // act
             var result = this.rule.Run(person1, person2);

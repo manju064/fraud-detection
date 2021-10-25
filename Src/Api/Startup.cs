@@ -5,8 +5,12 @@ using Autofac.Extensions.DependencyInjection;
 using Friss.FraudDetection.Api.Infrastructure.Middleware;
 using Friss.FraudDetection.Api.Modules;
 using Friss.FraudDetection.Contracts.Settings;
+using Friss.FraudDetection.DataAccess;
+using Friss.FraudDetection.Main.Person;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -43,11 +47,20 @@ namespace Friss.FraudDetection.Api
         /// <param name="services">services collection to configure.</param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddEntityFrameworkSqlite().AddDbContext<FraudDetectionContext>(opt =>
+            {
+                var connectionString = this.Configuration.GetConnectionString("DefaultConnection");
+                var connection = new SqliteConnection(connectionString);
+
+                opt.UseSqlite(connection, x => x.MigrationsAssembly("Friss.FraudDetection.DataAccess"));
+            });
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
             });
+
         }
 
         /// <summary>
@@ -67,8 +80,13 @@ namespace Friss.FraudDetection.Api
             builder.Register(context =>
             {
                 var factory = new RulesSettings.Factory(context.Resolve<IConfiguration>());
-                return factory.Build();
+                var settings = factory.Build();
+
+                return settings;
             }).SingleInstance();
+
+            // register custom services
+            builder.RegisterType<PersonService>().As<IPersonService>().InstancePerLifetimeScope();
         }
 
         /// <summary>

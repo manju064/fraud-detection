@@ -8,8 +8,13 @@ namespace Friss.FraudDetection.Contracts.Models
     /// <summary>
     /// Api model for Domain object for Person.
     /// </summary>
-    public class Person
+    public class PersonModel
     {
+        /// <summary>
+        /// Gets or sets person Id.
+        /// </summary>
+        public int PersonId { get; set; }
+
         /// <summary>
         /// Gets or sets first name of the person.
         /// </summary>
